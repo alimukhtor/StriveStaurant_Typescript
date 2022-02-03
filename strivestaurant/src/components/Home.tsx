@@ -9,7 +9,7 @@ const menu = menuJson as Dish[]
 
 
 const Home = () => {
-    const [selectedDish, setSelectedDish] = useState<Dish>({image:'', name:'', label:'', category:'', id:0, price:'', description:'' })
+    const [selectedDish, setSelectedDish] = useState<Dish>({image:'', name:'', id:0, description:'', comments:[]})
   
     return (
       <Container>
@@ -37,7 +37,7 @@ const Home = () => {
         </Row>
         <Row className='mt-3 justify-content-center'>
           <Col xs={12} md={6} className='text-center'>
-            {/* <DishComments selectedDish={selectedDish} /> */}
+            <DishComments selectedDish={selectedDish} />
           </Col>
         </Row>
       </Container>

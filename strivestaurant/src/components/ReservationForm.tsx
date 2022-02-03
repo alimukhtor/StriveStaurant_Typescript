@@ -2,10 +2,6 @@ import { FormEvent, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-interface ReservationFormProp{
-    fieldName:string
-    value:string
-}
 const ReservationForm = () => {
   const [reservation, setReservation] = useState({
     name: '',
@@ -16,7 +12,7 @@ const ReservationForm = () => {
     specialRequests: '',
   })
 
-  const handleInput = (fieldName:any, value:any) => {
+  const handleInput = (fieldName:string, value:boolean | string) => {
     setReservation({
       ...reservation,
       [fieldName]: value,
