@@ -1,18 +1,47 @@
-import * as dataArray from '../data/menu.json'
-const Home =()=> {
-    console.log("Data", dataArray);
-    
-    return(
-        <>
-        {/* {
-            dataArray.map(food=> (
-                <h1>{food.name}</h1>
+import menuJson from '../data/menu.json'
+import {Dish, Comment} from '../types/index'
+import { useState } from 'react'
+import { Carousel, Container, Col, Row } from 'react-bootstrap'
+import DishComments from './DishComments'
 
-            )
 
+const menu = menuJson as Dish[]
+
+
+const Home = () => {
+    const [selectedDish, setSelectedDish] = useState<Dish>({image:'', name:'', label:'', category:'', id:0, price:'', description:'' })
+  
+    return (
+      <Container>
+        <Row className='mt-3 justify-content-center'>
+          <Col xs={12} md={6} className='text-center'>
+            <h1>Welcome to Strivestaurant!</h1>
+            <p>We can serve only pasta</p>
+            <Carousel className='mt-5'>
+              {menu.map((pastaObject) => (
+                <Carousel.Item key={pastaObject.id}>
+                  <img
+                    className='d-block w-100'
+                    src={pastaObject.image}
+                    alt='First slide'
+                    onClick={() => setSelectedDish(pastaObject)}
+                  />
+                  <Carousel.Caption>
+                    <h3>{pastaObject.name}</h3>
+                    <p>{pastaObject.description}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Col>
+        </Row>
+        <Row className='mt-3 justify-content-center'>
+          <Col xs={12} md={6} className='text-center'>
+            {/* <DishComments selectedDish={selectedDish} /> */}
+          </Col>
+        </Row>
+      </Container>
     )
-        } */}
-        </>
-    )
-}
-export default Home
+  }
+  
+  export default Home
